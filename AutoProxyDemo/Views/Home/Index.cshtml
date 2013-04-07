@@ -1,0 +1,79 @@
+﻿<header>
+    <div class="content-wrapper">
+        <div class="float-left">
+            <p class="site-title">
+                <a href="~/">AutoProxy demo</a></p>
+        </div>
+    </div>
+</header>
+<div id="body">
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>AutoProxy demo</h1>
+                <h2>Lets see how this works!</h2>
+            </hgroup>
+            <p>
+                This is a self hosted web api. This page is populated using the persons controller doing 3 separated calls, one for each list of people.
+                You can see the result in the javascript code of the ../Views/Home/Index.cshtml file
+            </p>
+            <p>
+                It is a very silly example but the idea is to show how you can achieve a very fresh
+                and readable code on the client side when needs to talk to your server
+            </p>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        <h3>All the crew:</h3>
+        <ol class="round crew">
+        </ol>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        <h3>Men:</h3>
+        <ol class="round men">
+        </ol>
+    </script>
+    <section class="content-wrapper main-content clear-fix">
+        <h3>Ladies:</h3>
+        <ol class="round ladies">
+        </ol>
+    </script>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript" src="../../Scripts/Proxy/autoproxy.min.js" ></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Create the proxy
+            var personsProxy = new PersonsProxy('<put your web api>');
+            
+            //Pull all
+            personsProxy.GetAll(gotCrew);
+            
+            //Pull men
+            personsProxy.GetMen(gotMen);
+            
+            //Pull ladies (this function is using an alias)
+            personsProxy.GetLadies(gotladies);
+
+            function gotCrew(response) {
+                populate(response, '.crew');
+            }
+            
+            function gotMen(response) {
+                populate(response, '.men');
+            }
+            
+            function gotladies(response) {
+                populate(response, '.ladies');
+            }
+            
+            function populate(collection, selector) {
+                $.each(collection, function (index, record) {
+                    $(selector).append("<li class='one'><h5>{0}</h5>{1}</li>".format(record.Name, record.Comment));
+                });
+            }
+        });
+    </script>
+}
