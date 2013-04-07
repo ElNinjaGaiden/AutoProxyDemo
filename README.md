@@ -14,3 +14,5 @@ get the home page pulling the data correctly
             //......
         });
     </script>
+
+This is a [AutoProxy](https://github.com/Yoinbol/AutoProxy) demo
