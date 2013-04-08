@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using AutoProxy.Annotations;
@@ -30,6 +31,26 @@ namespace AutoProxyDemo.Controllers
         public IEnumerable<Person> GetWomen()
         {
             return Crew.Where(p => p.Sex == Sex.Female);
+        }
+
+        [AutoProxyIgnore]
+        public bool OneToIgnore()
+        {
+            throw  new NotImplementedException();
+        }
+
+        [HttpPost]
+        public void Save(Person person)
+        {
+            if (Crew.All(p => p.PersonId != person.PersonId))
+            {
+                Crew.Add(person);
+            }
+        }
+
+        public Person Get(int personId)
+        {
+            return Crew.FirstOrDefault(p => p.PersonId == personId);
         }
     }
 }

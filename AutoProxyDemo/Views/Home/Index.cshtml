@@ -44,33 +44,33 @@
 {
     <script type="text/javascript" src="../../Scripts/Proxy/autoproxy.min.js" ></script>
     <script type="text/javascript">
-        $(document).ready(function () {
+        $(document).ready(function() {
             //Create the proxy
-            var personsProxy = new PersonsProxy('<put your web api>');
-            
+            var personsProxy = new PersonsProxy();
+
             //Pull all
             personsProxy.GetAll(gotCrew);
-            
+
             //Pull men
             personsProxy.GetMen(gotMen);
-            
+
             //Pull ladies (this function is using an alias)
             personsProxy.GetLadies(gotladies);
 
             function gotCrew(response) {
                 populate(response, '.crew');
             }
-            
+
             function gotMen(response) {
                 populate(response, '.men');
             }
-            
+
             function gotladies(response) {
                 populate(response, '.ladies');
             }
-            
+
             function populate(collection, selector) {
-                $.each(collection, function (index, record) {
+                $.each(collection, function(index, record) {
                     $(selector).append("<li class='one'><h5>{0}</h5>{1}</li>".format(record.Name, record.Comment));
                 });
             }
