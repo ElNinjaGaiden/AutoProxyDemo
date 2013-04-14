@@ -65,6 +65,9 @@
             var newPerson = { PersonId: 10, Name: 'Carl', Sex: 1, Comment: 'Test' };
             personsProxy.Save(newPerson);
 
+            var request = { PersonId: 10 };
+            personsProxy.Get(request, callback);
+
             function gotCrew(response) {
                 populate(response, '.crew');
             }
@@ -81,6 +84,10 @@
                 $.each(collection, function(index, record) {
                     $(selector).append("<li class='one'><h5>{0}</h5>{1}</li>".format(record.Name, record.Comment));
                 });
+            }
+
+            function callback(response) {
+                console.log(response);
             }
         });
     </script>
