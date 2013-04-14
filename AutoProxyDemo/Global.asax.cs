@@ -21,8 +21,20 @@ namespace AutoProxyDemo
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            var assemblies = new List<Assembly>() { Assembly.GetExecutingAssembly() };
-            var generator = new AutoProxy.ProxyGenerator(assemblies);
+            //Example of configuration by code
+            //var config = new AutoProxy.AutoProxyConfiguration
+            //{
+            //    LibraryConfiguration = new AutoProxy.Library
+            //    {
+            //        Compress = false,
+            //        Namespace = "AutoProxyDemo",
+            //        Output = "~/Scripts/proxy/autoproxy.min.js",
+            //        IncludeFiles = new List<AutoProxy.File> { new AutoProxy.File { Src = "~/Scripts/proxy/autoproxy.core.js" } },
+            //        Controllers = new List<AutoProxy.Controller> { new AutoProxy.Controller { Name = "OrdersController" } }
+            //    }
+            //};
+
+            var generator = new AutoProxy.ProxyGenerator();
             generator.ResolveProxies();
         }
     }

@@ -42,9 +42,8 @@
     <Reference Include="AjaxMin">
       <HintPath>..\packages\AjaxMin.4.86.4836.34222\lib\net40\AjaxMin.dll</HintPath>
     </Reference>
-    <Reference Include="AutoProxy, Version=1.0.1.2, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\AutoProxy.1.0.1.2\lib\net45\AutoProxy.dll</HintPath>
+    <Reference Include="AutoProxy">
+      <HintPath>..\packages\AutoProxy.2.0.0.0\lib\net45\AutoProxy.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -135,6 +134,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="JsonpFormatter.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -197,6 +197,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="AutoProxy.config" />
+    <None Include="Properties\PublishProfiles\AutoProxyDemo.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -213,8 +214,7 @@
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\prototype\string.js" />
-    <Content Include="Scripts\Proxy\BaseProxy.js" />
-    <Content Include="Scripts\Proxy\Core.js" />
+    <Content Include="Scripts\proxy\autoproxy.core.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

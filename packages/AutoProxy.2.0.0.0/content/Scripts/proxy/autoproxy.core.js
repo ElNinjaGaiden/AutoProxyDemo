@@ -1,4 +1,4 @@
-//reference http://javascriptissexy.com/oop-in-javascript-what-you-need-to-know/
+﻿//reference http://javascriptissexy.com/oop-in-javascript-what-you-need-to-know/
 function inheritPrototype(childObject, parentObject) {
     // Crockford’s method to copy the properties and methods from the parentObject onto the childObject
     // So the copyOfParent object now has everything the parentObject has 
@@ -12,12 +12,12 @@ function inheritPrototype(childObject, parentObject) {
     childObject.prototype = copyOfParent;
 }
 
-function AutoProxyDemoBaseProxy(controllerName) {
+function __namespace__BaseProxy(controllerName) {
     this.controllerName = controllerName;
 }
 
-AutoProxyDemoBaseProxy.prototype = {
-    constructor: AutoProxyDemoBaseProxy,
+__namespace__BaseProxy.prototype = {
+    constructor: __namespace__BaseProxy,
     url: '',
     contentType: 'application/json',
     dataType: 'json',
@@ -50,30 +50,3 @@ AutoProxyDemoBaseProxy.prototype = {
         });
     }
 };
-
-function PersonsProxy() { 
-   AutoProxyDemoBaseProxy.call(this, 'Persons'); 
-} 
-
-inheritPrototype(PersonsProxy, AutoProxyDemoBaseProxy);
-
-PersonsProxy.prototype.GetAll = function (callback, context, error) { 
-   this.ExecReq('GET', 'GetAll', null, callback, context, error); 
-}; 
-
-PersonsProxy.prototype.GetMen = function (callback, context, error) { 
-   this.ExecReq('GET', 'GetMen', null, callback, context, error); 
-}; 
-
-PersonsProxy.prototype.GetLadies = function (callback, context, error) { 
-   this.ExecReq('GET', 'GetWomen', null, callback, context, error); 
-}; 
-
-PersonsProxy.prototype.Save = function (request, callback, context, error) { 
-   this.ExecReq('POST', 'Save', request, callback, context, error); 
-}; 
-
-PersonsProxy.prototype.Get = function (request, callback, context, error) { 
-   this.ExecReq('GET', 'Get', request, callback, context, error); 
-}; 
-

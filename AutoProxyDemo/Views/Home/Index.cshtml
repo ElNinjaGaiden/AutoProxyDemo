@@ -44,7 +44,12 @@
 {
     <script type="text/javascript" src="../../Scripts/Proxy/autoproxy.min.js" ></script>
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
+
+            //Configure the api address at parent level
+            //This means all proxies from this library will use this configuration setting
+            AutoProxyDemoBaseProxy.prototype.url = 'api';
+
             //Create the proxy
             var personsProxy = new PersonsProxy();
 
@@ -56,6 +61,9 @@
 
             //Pull ladies (this function is using an alias)
             personsProxy.GetLadies(gotladies);
+
+            var newPerson = { PersonId: 10, Name: 'Carl', Sex: 1, Comment: 'Test' };
+            personsProxy.Save(newPerson);
 
             function gotCrew(response) {
                 populate(response, '.crew');
