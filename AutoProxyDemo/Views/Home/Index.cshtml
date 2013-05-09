@@ -54,19 +54,19 @@
             var personsProxy = new PersonsProxy();
 
             //Pull all
-            personsProxy.GetAll(gotCrew);
+            personsProxy.GetAll().done(gotCrew);
 
             //Pull men
-            personsProxy.GetMen(gotMen);
+            personsProxy.GetMen().done(gotMen);
 
             //Pull ladies (this function is using an alias)
-            personsProxy.GetLadies(gotladies);
+            personsProxy.GetLadies().done(gotLadies);
 
             var newPerson = { PersonId: 10, Name: 'Carl', Sex: 1, Comment: 'Test' };
             personsProxy.Save(newPerson);
 
             var request = { PersonId: 10 };
-            personsProxy.Get(request, callback);
+            personsProxy.Get(request).done(callback);
 
             function gotCrew(response) {
                 populate(response, '.crew');
@@ -76,18 +76,22 @@
                 populate(response, '.men');
             }
 
-            function gotladies(response) {
+            function gotLadies(response) {
                 populate(response, '.ladies');
             }
 
             function populate(collection, selector) {
-                $.each(collection, function(index, record) {
-                    $(selector).append("<li class='one'><h5>{0}</h5>{1}</li>".format(record.Name, record.Comment));
+                var html = '';
+                $.each(collection, function (index, record) {
+                    html += "<li class='one'><h5>{0}</h5>{1}</li>".format(record.Name, record.Comment);
                 });
+                $(selector).append(html);
             }
 
             function callback(response) {
-                console.log(response);
+                if (response) {
+                    alert(response.Name);
+                }
             }
         });
     </script>

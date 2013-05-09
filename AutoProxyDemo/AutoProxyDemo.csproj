@@ -43,7 +43,7 @@
       <HintPath>..\packages\AjaxMin.4.86.4836.34222\lib\net40\AjaxMin.dll</HintPath>
     </Reference>
     <Reference Include="AutoProxy">
-      <HintPath>..\packages\AutoProxy.2.0.0.2\lib\net45\AutoProxy.dll</HintPath>
+      <HintPath>..\packages\AutoProxy.2.0.0.3\lib\net45\AutoProxy.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
